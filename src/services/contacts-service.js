@@ -1,13 +1,9 @@
-import axios from 'axios';
+import http from './http-service';
 
 class ContactsService {
-    constructor() {
-        axios.defaults.baseURL = 'http://contacts.local:8000/api';
-        axios.defaults.headers.common['Accept'] = 'application/json';
-    }
 
     getContacts(page = 1) {
-        return axios.get('/contacts', { params: { page }})
+        return http.get('/contacts', { params: { page }})
             .then(({ data }) => data)
     }
 }
